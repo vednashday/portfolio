@@ -19,7 +19,7 @@ const Start = () => {
                     <li>MongoDB, Firebase</li>
                     <li>Tailwind CSS, Figma</li>
                 </ul>
-                <a href="/projects">
+                <a href="https://vednashday-portfolio.vercel.app/projects">
                 <button className="mt-6 px-4 py-2 border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-black transition-all rounded">
                     See Projects
                 </button>
