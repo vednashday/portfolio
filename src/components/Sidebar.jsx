@@ -17,7 +17,7 @@ const Sidebar = ({ toggleTerminal }) => { // Receive toggleTerminal as a prop
     return (
         <div className="w-64 bg-[#1e1e1e] text-white font-mono text-sm h-full border-r border-zinc-700">
             <div className="p-2">
-                {/* Portfolio Folder */}
+                
                 <button
                     className="flex items-center gap-1 w-full hover:bg-[#2a2a2a] px-1 py-1 rounded"
                     onClick={() => setPortfolioOpen(!portfolioOpen)}

@@ -7,9 +7,11 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 import Start from "./pages/Start";
+import Contact from "./pages/Contact";
 import Botbar from "./components/Botbar";
 import Terminal from "./components/Terminal";
 import { useState } from "react";
+
 
 
 const App = () => {
@@ -40,7 +42,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/skills" element={<Skills />} />
-
+            <Route path="/contact" element={<Contact />} />
           </Routes>
 
         </Editor>
