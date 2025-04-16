@@ -24,7 +24,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
                   <FaGithub className="text-2xl" />
                 </a>
               )}
-              {project.live && (
+              {project.live && project.live !== "#" && (
                 <a
                   href={project.live}
                   target="_blank"
