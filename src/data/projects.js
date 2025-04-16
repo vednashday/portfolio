@@ -7,39 +7,55 @@ import MangeImage from '../assets/imgManager.png';
 const projects = [
   {
     title: "YourInterest — Pinterest Clone",
-    description: "A full-featured clone of Pinterest with image uploads, dynamic boards, and responsive UI built using React.js and Firebase.",
+    description: "A full-featured clone of Pinterest built with Node.js Users can upload, save, and browse images across dynamic boards with a fully responsive interface.",
+    techStack: ["Node.js", "Express.js", "Tailwind CSS" , "EJS" , "MongoDB"],
+    role: "Built custom upload logic, responsive layouts, and integrated Firebase authentication & storage.",
+    challenges: "Handling real-time updates and optimizing image load times for better UX.",
     image: placeImage,
     link: "https://github.com/vednashday/YourInterest",
     live: "#"
   },
   {
     title: "VS Code Portfolio Website",
-    description: "A developer-themed personal portfolio styled like Visual Studio Code. Built with React, Tailwind CSS, and fully responsive design.",
+    description: "A portfolio designed to look and feel like Visual Studio Code – complete with tabs, file explorer, and a terminal-inspired contact form.",
+    techStack: ["React.js", "Tailwind CSS", "Framer Motion"],
+    role: "Designed and developed the entire site from scratch, focusing on minimal yet creative UI/UX.",
+    challenges: "Building a complex layout while keeping it responsive across devices.",
     image: portImage,
-    link: "https://github.com/vednashday/portfolio"
-    ,live: "https://vednashday-portfolio.vercel.app/"
+    link: "https://github.com/vednashday/portfolio",
+    live: "https://vednashday-portfolio.vercel.app/"
   },
   {
     title: "Modern E-Commerce Platform",
-    description: "A responsive online shopping platform with product listings, cart functionality, and a clean UI built using HTML and CSS. Designed to enhance frontend development skills.",
+    description: "A clean, responsive e-commerce site featuring product cards, category filters, and shopping cart mockup. Created as a frontend showcase project.",
+    techStack: ["HTML", "CSS", "JavaScript (Vanilla)"],
+    role: "Focused on layout, user interactions, and refining UI/UX flow for shopping.",
+    challenges: "Responsive design using plain CSS and organizing static assets.",
     image: EImage,
-    link: "https://github.com/vednashday/E-commerce-Website"
-    ,live: "#"
+    link: "https://github.com/vednashday/E-commerce-Website",
+    live: "#"
   },
   {
-    title: "image-manager // React",
-    description: "A sleek image management app built with React. Features image uploading, cropping, resizing, and previewing — all styled with Tailwind and powered by libraries like Cropper.js and MUI for a smooth UI experience.",
+    title: "Image Manager",
+    description: "A modern image management app with advanced features like cropping, resizing, and previewing. Designed to explore npm libraries and custom UI workflows.",
+    techStack: ["React.js", "Tailwind CSS", "Cropper.js", "Material UI"],
+    role: "Integrated multiple image-processing libraries and handled state across custom components.",
+    challenges: "Synchronizing user actions with cropping logic and maintaining clean UI/UX.",
     image: MangeImage,
-    link: "https://github.com/vednashday/image-manager"
-    ,live: "https://image-manager-lake.vercel.app/"
+    link: "https://github.com/vednashday/image-manager",
+    live: "https://image-manager-lake.vercel.app/"
   },
   {
     title: "ProfitWise — Stock Analysis Tool",
-    description: "A stock analysis platform that provides buy/sell signals and maintains a ledger for tracking decisions. Built with React and charting libraries. Under Construction",
+    description: "A stock insight tool that shows buy/sell signals and manages a ledger for tracking user investment decisions. Still a work-in-progress.",
+    techStack: ["React.js", "Chart.js", "Tailwind CSS"],
+    role: "Designed the UI, implemented charting logic, and created the ledger system for tracking.",
+    challenges: "Integrating financial data logic and making the charts interactive.",
     image: profitwiseImage,
-    link: "https://github.com/vednashday/Stock_helper_ReactJS_project"
-    ,live: "#"
+    link: "https://github.com/vednashday/Stock_helper_ReactJS_project",
+    live: "#"
   }
 ];
+
 
 export default projects;

@@ -48,6 +48,9 @@ const About = () => {
         </span>
         ,
       </p>
+      <p>
+        
+      </p>
 
       <p>&#125;;</p>
 
@@ -56,6 +59,15 @@ const About = () => {
         <span className="text-purple-400">export default</span>{" "}
         <span className="text-blue-400">aboutMe</span>;
       </p>
+
+      <div className="mt-6">
+          <h3 className="text-xl text-[#569CD6] mb-4">Education</h3>
+          <div className="text-white">
+            <p className="font-semibold">Bachelor of Technology (B.Tech)</p>
+            <p className="font-semibold">Software Engineering</p>
+            <p className="text-zinc-400">Delhi Technological University (DTU), 2022 - Present</p>
+          </div>
+      </div>
 
       <div className="mt-4 flex flex-wrap gap-4 text-zinc-400">
         <span className="flex items-center gap-2">
@@ -72,7 +84,7 @@ const About = () => {
         </span>
       </div>
 
-      
+
     </div>
   );
 };

@@ -1,8 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Terminal = () => {
   const [input, setInput] = useState(""); // User's command input
   const [output, setOutput] = useState([]); // Terminal output history
+  const terminalRef = useRef(null); // Reference for scrolling
+
+  // Default output on initial load
+  useEffect(() => {
+    setOutput([
+      "Welcome to my portfolio terminal!",
+      "Type 'help' for available commands."
+    ]);
+  }, []);
 
   // Handle the command input and process it
   const handleInput = (e) => {
@@ -17,16 +26,19 @@ const Terminal = () => {
     let response;
     switch (command.toLowerCase()) {
       case "help":
-        response = "Available commands: help, clear, about, ls";
+        response = "Available commands: help, clear, about, ls, projects";
         break;
       case "about":
-        response = "This is a VS code Themed Portfolio. Type 'help' for commands.";
+        response = "This is a VS Code Themed Portfolio. Type 'help' for commands.";
         break;
       case "clear":
         setOutput([]); // Clear the terminal
         return;
       case "ls":
         response = "aboutMe.js, projects.js, skills.json, contact.html";
+        break;
+      case "projects":
+        response = "1. Pinterest Clone\n2. VS Code Portfolio\n3. Image Manager\n4. ProfitWise\n5. MyProfitWise";
         break;
       default:
         response = `Command not found: ${command}`;
@@ -35,10 +47,18 @@ const Terminal = () => {
     setOutput((prevOutput) => [...prevOutput, `> ${command}`, response]);
   };
 
-  
+  // Auto-scroll to the bottom of the terminal on new output
+  useEffect(() => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [output]);
 
   return (
-    <div className="bg-black border-t border-zinc-600 text-white p-4 h-[30%] w-full overflow-y-auto font-mono">
+    <div
+      ref={terminalRef}
+      className="bg-black border-t border-zinc-600 text-white p-4 h-[30%] w-full overflow-y-auto font-mono"
+    >
       {/* Terminal Output */}
       <div className="mb-2">
         {output.map((line, index) => (
@@ -55,7 +75,7 @@ const Terminal = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleInput}
-          placeholder="Available commands: help, clear, about, ls"
+          placeholder="Type Here..."
         />
       </div>
     </div>
