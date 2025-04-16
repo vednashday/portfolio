@@ -55,7 +55,7 @@ const Terminal = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleInput}
-          placeholder="Type a command..."
+          placeholder="Available commands: help, clear, about, ls"
         />
       </div>
     </div>

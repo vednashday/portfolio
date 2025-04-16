@@ -1,5 +1,5 @@
 import { Dialog } from '@headlessui/react';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaLink } from 'react-icons/fa';
 
 const ProjectModal = ({ isOpen, onClose, project }) => {
   if (!project) return null;
@@ -11,6 +11,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
         <Dialog.Panel className="w-full max-w-md rounded-lg bg-white p-6 space-y-4 shadow-xl">
           <div className='flex w-full p-2 flex-row justify-between'>
           <Dialog.Title className="text-xl font-bold">{project.title}</Dialog.Title>
+          <div className='flex flex-row gap-2'>
           {project.link && (
             <a
               href={project.link}
@@ -21,6 +22,18 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
               <FaGithub className='text-2xl' />
             </a>
           )}
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline"
+            >
+              <FaLink className='text-2xl' />
+            </a>
+          )}
+          </div>
+          
           </div>
           
           <img src={project.image} alt={project.title} className="rounded-lg" />
