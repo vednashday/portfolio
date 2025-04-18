@@ -14,6 +14,7 @@ const Contact = () => {
         {/* Download Resume */}
         <a
           href="https://drive.google.com/file/d/11UXiO8rRVp0SCxzIKpcOl1Mi8eEHRpEf/view?usp=sharing"
+          target="_blank"
           download
           className="flex items-center gap-2 bg-[#0e639c] hover:bg-[#1177bb] px-4 py-2 rounded-lg text-white transition duration-300"
         >
