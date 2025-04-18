@@ -13,7 +13,7 @@ const Contact = () => {
       <div className="flex gap-6">
         {/* Download Resume */}
         <a
-          href="../assets/Resume-vedansh.pdf"
+          href="https://drive.google.com/file/d/11UXiO8rRVp0SCxzIKpcOl1Mi8eEHRpEf/view?usp=sharing"
           download
           className="flex items-center gap-2 bg-[#0e639c] hover:bg-[#1177bb] px-4 py-2 rounded-lg text-white transition duration-300"
         >
