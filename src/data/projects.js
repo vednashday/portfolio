@@ -3,8 +3,19 @@ import profitwiseImage from '../assets/profitwise.png';
 import portImage from '../assets/portfolio1.png';
 import EImage from '../assets/web.png';
 import MangeImage from '../assets/imgManager.png';
+import BuzzroomImage from '../assets/BuzzRoom.png';
 
 const projects = [
+  {
+    title: "Buzzroom - Realtime Social App",
+    description: "A full-stack social app that enables users to add friends, chat in real-time, and video call with seamless connectivity.",
+    techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "Socket.IO", "WebRTC", "TailwindCSS"],
+    role: "Built and integrated real-time messaging and video calling features using Socket.IO and WebRTC, while managing user sessions and scalable chat architecture.",
+    challenges: "Ensuring smooth real-time communication across devices, handling peer-to-peer video calls, and syncing friend requests/messages with server state.",
+    image: BuzzroomImage, 
+    link: "https://github.com/vednashday/Buzzroom",
+    live: "https://buzzroom.onrender.com"
+  },
   {
     title: "YourInterest — Pinterest Clone",
     description: "A full-featured clone of Pinterest built with Node.js Users can upload, save, and browse images across dynamic boards with a fully responsive interface.",
