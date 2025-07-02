@@ -3,12 +3,13 @@ import {
   FaChevronRight,
   FaChevronDown,
   FaFolder,
+  FaFile,
   FaFolderOpen,
-  FaTerminal,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import NowPlaying from "./NowPlaying";
 import catimg from "../assets/cats.png";
+import TerminalIcon from '@mui/icons-material/Terminal';
 
 const Sidebar = ({ toggleTerminal }) => {
   const location = useLocation();
@@ -79,7 +80,7 @@ const Sidebar = ({ toggleTerminal }) => {
             src={catimg}
             alt="Logo"
             className={`transition-all duration-300 ${
-              isCollapsed ? "w-10 h-10" : "w-10 h-10"
+              isCollapsed ? "w-11 h-11" : "w-10 h-10"
             } rounded-full`}
           />
           {!isCollapsed && <span className="text-xl">VPScode</span>}
@@ -110,11 +111,11 @@ const Sidebar = ({ toggleTerminal }) => {
               <Link
                 key={file.path}
                 to={file.path}
-                className={`flex items-center gap-2 px-2 py-1 mb-1 rounded hover:bg-[#3c3c3c] ${
+                className={`flex items-center gap-2 px-2 py-1 mb-1 ml-5 rounded hover:bg-[#3c3c3c] ${
                   location.pathname === file.path ? "bg-[#3c3c3c]" : ""
                 }`}
               >
-                <FaFolder className="text-blue-400" />
+                <FaFile className="text-blue-400" />
                 {!isCollapsed && <span>{file.name}</span>}
               </Link>
             ))}
@@ -127,7 +128,7 @@ const Sidebar = ({ toggleTerminal }) => {
             onClick={toggleTerminal}
             className="flex items-center gap-2 w-full hover:bg-[#2a2a2a] px-2 py-1 rounded"
           >
-            <FaTerminal className="text-green-400" />
+            <TerminalIcon className="text-green-400" />
             {!isCollapsed && (
               <span className="text-zinc-200">Toggle Terminal</span>
             )}

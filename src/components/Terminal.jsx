@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 
 const Terminal = () => {
-  const [input, setInput] = useState(""); // User's command input
-  const [output, setOutput] = useState([]); // Terminal output history
-  const terminalRef = useRef(null); // Reference for scrolling
+  const [input, setInput] = useState(""); 
+  const [output, setOutput] = useState([]); 
+  const terminalRef = useRef(null); 
 
-  // Default output on initial load
+  
   useEffect(() => {
     setOutput([
       "Welcome to my portfolio terminal!",
@@ -13,7 +13,7 @@ const Terminal = () => {
     ]);
   }, []);
 
-  // Handle the command input and process it
+  
   const handleInput = (e) => {
     if (e.key === "Enter") {
       processCommand(input);
@@ -21,7 +21,7 @@ const Terminal = () => {
     }
   };
 
-  // Process commands
+
   const processCommand = (command) => {
     let response;
     switch (command.toLowerCase()) {
@@ -32,13 +32,13 @@ const Terminal = () => {
         response = "This is a VS Code Themed Portfolio. Type 'help' for commands.";
         break;
       case "clear":
-        setOutput([]); // Clear the terminal
+        setOutput([]);
         return;
       case "ls":
         response = "aboutMe.js, projects.js, skills.json, contact.html";
         break;
       case "projects":
-        response = "1. Pinterest Clone\n2. VS Code Portfolio\n3. Image Manager\n4. ProfitWise\n5. MyProfitWise";
+        response = "1. Pinterest Clone\n2. VS Code Portfolio\n3. Image Manager\n4. ProfitWise\n5. MyProfitWise\n6. BuzzRoom";
         break;
       default:
         response = `Command not found: ${command}`;

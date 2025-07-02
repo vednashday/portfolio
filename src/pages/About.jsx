@@ -64,7 +64,7 @@ const About = () => {
           <p className="font-semibold">Bachelor of Technology (B.Tech)</p>
           <p className="font-semibold">Software Engineering</p>
           <p className="text-zinc-400">
-            Delhi Technological University (DTU), 2022 - Present
+            Delhi Technological University (DTU), 2022 - 2026
           </p>
         </div>
       </div>

@@ -14,8 +14,7 @@ const TabBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [openTabs, setOpenTabs] = useState([]);
-  
-  // Add tab when route changes
+
   useEffect(() => {
     const currentPath = location.pathname;
     if (!openTabs.includes(currentPath)) {
@@ -26,34 +25,42 @@ const TabBar = () => {
   const closeTab = (path) => {
     setOpenTabs((prev) => prev.filter((p) => p !== path));
     if (location.pathname === path) {
-      
       const remaining = openTabs.filter((p) => p !== path);
       navigate(remaining[remaining.length - 1] || "/");
     }
   };
 
   return (
-    <div className="flex bg-[#2d2d2d]  text-sm overflow-x-auto no-scrollbar">
-      {openTabs.map((path) => (
-        <div
-          key={path}
-          onClick={() => navigate(path)}
-          className={`px-4 py-2 flex items-center gap-2 cursor-pointer border-r border-zinc-700
-          ${location.pathname === path ? "bg-[#1e1e1e] border-t-2 border-blue-500 text-white italic" : "text-zinc-400 hover:text-white"}
-        `}
-        >
-          {tabNames[path] || "Unknown"}
-          {path !== "/" && (
-            <IoClose
-              onClick={(e) => {
-                e.stopPropagation(); // Prevent triggering navigation
-                closeTab(path);
-              }}
-              className="text-zinc-500 hover:text-red-400"
-            />
-          )}
-        </div>
-      ))}
+    <div className="w-full bg-zinc-800 border-b border-zinc-700 overflow-x-auto no-scrollbar">
+      <div className="flex h-10 min-w-full">
+        {openTabs.map((path) => (
+          <div
+            key={path}
+            onClick={() => navigate(path)}
+            className={`flex items-center justify-between px-3 py-2 gap-2 cursor-pointer border-r border-zinc-700
+              ${
+                location.pathname === path
+                  ? "bg-[#1e1e1e] border-t-2 border-blue-500 text-white italic"
+                  : "text-zinc-400 hover:text-white"
+              }
+              flex-1 min-w-[120px] max-w-[200px]
+              transition-all duration-200
+            `}
+          >
+            <span className="truncate">{tabNames[path] || "Unknown"}</span>
+
+            {path !== "/" && (
+              <IoClose
+                onClick={(e) => {
+                  e.stopPropagation();
+                  closeTab(path);
+                }}
+                className="text-zinc-500 hover:text-red-400 flex-shrink-0"
+              />
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
