@@ -2,22 +2,18 @@ import { useEffect, useState, useRef } from 'react';
 
 const NowPlaying = ({ isCollapsed }) => {
   const [song, setSong] = useState(null);
-  const [lastOnline, setLastOnline] = useState(null);
   const intervalRef = useRef();
 
-  // 🧠 Fetch now playing
+  // Fetch now playing
   const fetchNowPlaying = () => {
     fetch('/api/now-playing')
-      .then((res) => res.ok ? res.json() : Promise.reject())
-      .then((data) => {
-        setSong(data);
-        if (!data.isPlaying) setLastOnline(new Date()); // Save timestamp
-      })
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((data) => setSong(data))
       .catch(() => setSong(null));
   };
 
   useEffect(() => {
-    fetchNowPlaying(); // Initial fetch
+    fetchNowPlaying(); // Initial
 
     const handleVisibility = () => {
       if (document.visibilityState === 'visible') {
@@ -29,7 +25,7 @@ const NowPlaying = ({ isCollapsed }) => {
     };
 
     document.addEventListener('visibilitychange', handleVisibility);
-    handleVisibility(); // Initial check
+    handleVisibility();
 
     return () => {
       clearInterval(intervalRef.current);
@@ -37,10 +33,9 @@ const NowPlaying = ({ isCollapsed }) => {
     };
   }, []);
 
-  // 🕒 Format time difference
-  const formatTimeAgo = (date) => {
-    if (!date) return '';
-    const diff = Math.floor((Date.now() - date.getTime()) / 1000);
+  const formatTimeAgo = (timestamp) => {
+    if (!timestamp) return '';
+    const diff = Math.floor((Date.now() - new Date(timestamp).getTime()) / 1000);
     if (diff < 60) return `${diff} sec ago`;
     if (diff < 3600) return `${Math.floor(diff / 60)} min ago`;
     return `${Math.floor(diff / 3600)} hr ago`;
@@ -54,26 +49,26 @@ const NowPlaying = ({ isCollapsed }) => {
     );
   }
 
-  const albumArt = song.albumImageUrl || "/fallback-art.png"; // Optional fallback art
+  const albumArt = song.albumImageUrl || '/fallback-art.png';
 
   return (
     <div className="mb-4 mx-2 flex items-center justify-center bg-[#2a2a2a] rounded-md p-2">
       <img
         src={albumArt}
         alt="Album"
-        className={` ${isCollapsed ? `w-12 h-12` : `w-10 h-10` } rounded-md`}
-        title={song.title || "Not listening"}
+        className={` ${isCollapsed ? 'w-12 h-12' : 'w-10 h-10'} rounded-md`}
+        title={song.title || 'Not listening'}
       />
       {!isCollapsed && (
         <div className="flex-1 max-w-48 p-2">
           <p className="text-[10px] text-zinc-400">
-            {song.isPlaying ? 'Now Playing' : 'Last online'}
+            {song.isPlaying ? 'Now Playing' : `Last online ${formatTimeAgo(song.lastPlayedAt)}`}
           </p>
           <p className="text-[13px] truncate text-white">
             {song.title || 'None'}
           </p>
           <p className="text-[11px] truncate text-zinc-400">
-            {song.artist || formatTimeAgo(lastOnline)}
+            {song.artist || ''}
           </p>
           {song.songUrl && song.isPlaying && (
             <a

@@ -28,7 +28,7 @@ export default async function handler(req, res) {
 
   const { access_token } = await tokenResponse.json();
 
-  // Try to fetch now playing
+  // ✅ Step 1: Try currently playing
   const nowPlayingResponse = await fetch(
     'https://api.spotify.com/v1/me/player/currently-playing',
     {
@@ -38,6 +38,7 @@ export default async function handler(req, res) {
     }
   );
 
+  // ✅ Step 2: If nothing is playing, show last played track
   if (nowPlayingResponse.status === 204 || nowPlayingResponse.status > 400) {
     const recentResponse = await fetch(
       'https://api.spotify.com/v1/me/player/recently-played?limit=1',
@@ -54,12 +55,7 @@ export default async function handler(req, res) {
 
       if (lastPlayed) {
         const {
-          track: {
-            name,
-            artists,
-            album,
-            external_urls,
-          },
+          track: { name, artists, album, external_urls },
           played_at,
         } = lastPlayed;
 
@@ -71,15 +67,23 @@ export default async function handler(req, res) {
           album: album.name,
           albumImageUrl: album.images?.[0]?.url,
           songUrl: external_urls.spotify,
-        })
-        
-        console.log(played_at);
+        });
       }
     }
 
-    return res.status(200).json({ isPlaying: false });
+    // 👇 If no recent track found
+    return res.status(200).json({
+      isPlaying: false,
+      lastPlayedAt: null,
+      title: null,
+      artist: null,
+      album: null,
+      albumImageUrl: null,
+      songUrl: null,
+    });
   }
 
+  // ✅ Step 3: If something is playing
   const song = await nowPlayingResponse.json();
 
   const isPlaying = song.is_playing;
