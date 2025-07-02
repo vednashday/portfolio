@@ -63,7 +63,7 @@ const Sidebar = ({ toggleTerminal }) => {
     <div
       className={`
         ${isCollapsed ? "w-16" : "w-64"}
-        bg-[#1e1e1e] text-white font-mono text-sm h-full border-r border-zinc-700
+        bg-[#1e1e1e] text-white font-mono text-sm h-[97.5vh] border-r border-zinc-700
         flex flex-col justify-between transition-all duration-300 ease-in-out
       `}
     >

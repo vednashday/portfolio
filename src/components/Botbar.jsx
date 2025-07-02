@@ -3,7 +3,7 @@ import { FiZap } from "react-icons/fi";
 
 const Botbar = () => {
   return (
-    <div className="w-full fixed bottom-0 bg-[#007acc] text-white flex items-center justify-between px-4 py-1 text-xs font-mono z-50">
+    <div className="w-full h-[2.5vh] fixed bottom-0 bg-[#007acc] text-white flex items-center justify-between px-4 py-1 text-xs font-mono z-50">
       {/* Left Side: Status or Cool Stuff */}
       <div className="flex items-center gap-4">
         <span className="flex items-center gap-1">
