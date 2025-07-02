@@ -33,14 +33,6 @@ const NowPlaying = ({ isCollapsed }) => {
     };
   }, []);
 
-  const formatTimeAgo = (timestamp) => {
-    if (!timestamp) return '';
-    const diff = Math.floor((Date.now() - new Date(timestamp).getTime()) / 1000);
-    if (diff < 60) return `${diff} sec ago`;
-    if (diff < 3600) return `${Math.floor(diff / 60)} min ago`;
-    return `${Math.floor(diff / 3600)} hr ago`;
-  };
-
   if (!song) {
     return (
       <div className="mb-4 flex justify-center">
@@ -62,7 +54,7 @@ const NowPlaying = ({ isCollapsed }) => {
       {!isCollapsed && (
         <div className="flex-1 max-w-48 p-2">
           <p className="text-[10px] text-zinc-400">
-            {song.isPlaying ? 'Now Playing' : `Last online ${formatTimeAgo(song.lastPlayedAt)}`}
+            {song.isPlaying ? 'Now Playing' : `Last online ${song.lastPlayedAt}`}
           </p>
           <p className="text-[13px] truncate text-white">
             {song.title || 'None'}
