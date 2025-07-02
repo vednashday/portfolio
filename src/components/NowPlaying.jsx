@@ -37,7 +37,7 @@ const NowPlaying = ({ isCollapsed }) => {
 
   return (
     <div
-      className={`mb-4 flex items-center justify-center bg-[#2a2a2a] rounded-md p-2`}
+      className={`mb-4 mx-2 flex items-center justify-center bg-[#2a2a2a] rounded-md p-2`}
     >
       <img
         src={song.albumImageUrl}
