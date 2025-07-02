@@ -46,7 +46,7 @@ const NowPlaying = ({ isCollapsed }) => {
         title={isCollapsed ? song.title : ''}
       />
       {!isCollapsed && (
-        <div className="flex-1 max-w-60">
+        <div className="flex-1 max-w-48 p-2">
           <p className="text-[10px] text-zinc-400">Now Playing</p>
           <p className="text-[13px] truncate text-white">{song.title}</p>
           <p className="text-[11px] truncate text-zinc-400">{song.artist}</p>
