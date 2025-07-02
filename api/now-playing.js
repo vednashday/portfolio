@@ -73,7 +73,7 @@ export default async function handler(req, res) {
           songUrl: external_urls.spotify,
         })
         
-        console.log(lastPlayedAt);
+        console.log(played_at);
       }
     }
 
