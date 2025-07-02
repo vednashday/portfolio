@@ -8,9 +8,13 @@ export default async function handler(req, res) {
     SPOTIFY_REFRESH_TOKEN: refresh_token,
   } = process.env;
 
+  if (!client_id || !client_secret || !refresh_token) {
+    return res.status(500).json({ error: 'Missing Spotify ENV variables' });
+  }
+
   const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
 
-  const response = await fetch('https://accounts.spotify.com/api/token', {
+  const tokenResponse = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
       Authorization: `Basic ${basic}`,
@@ -22,8 +26,9 @@ export default async function handler(req, res) {
     }),
   });
 
-  const { access_token } = await response.json();
+  const { access_token } = await tokenResponse.json();
 
+  // Try to fetch now playing
   const nowPlayingResponse = await fetch(
     'https://api.spotify.com/v1/me/player/currently-playing',
     {
@@ -33,20 +38,55 @@ export default async function handler(req, res) {
     }
   );
 
+  // If nothing is playing
   if (nowPlayingResponse.status === 204 || nowPlayingResponse.status > 400) {
+    // Get most recently played track
+    const recentResponse = await fetch(
+      'https://api.spotify.com/v1/me/player/recently-played?limit=1',
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      }
+    );
+
+    if (recentResponse.ok) {
+      const recentData = await recentResponse.json();
+      const lastPlayed = recentData.items?.[0];
+
+      if (lastPlayed) {
+        const {
+          track: {
+            name,
+            artists,
+            album,
+            external_urls,
+          },
+          played_at,
+        } = lastPlayed;
+
+        return res.status(200).json({
+          isPlaying: false,
+          lastPlayedAt: played_at,
+          title: name,
+          artist: artists.map((a) => a.name).join(', '),
+          album: album.name,
+          albumImageUrl: album.images?.[0]?.url,
+          songUrl: external_urls.spotify,
+        });
+      }
+    }
+
+    // If we can't get recent
     return res.status(200).json({ isPlaying: false });
   }
 
-  if (!client_id || !client_secret || !refresh_token) {
-  return res.status(500).json({ error: 'Missing Spotify ENV variables' });
-}
-
-
+  // Now playing
   const song = await nowPlayingResponse.json();
 
   const isPlaying = song.is_playing;
   const title = song.item.name;
-  const artist = song.item.artists.map((_artist) => _artist.name).join(', ');
+  const artist = song.item.artists.map((a) => a.name).join(', ');
   const album = song.item.album.name;
   const albumImageUrl = song.item.album.images[0].url;
   const songUrl = song.item.external_urls.spotify;
