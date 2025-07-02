@@ -37,9 +37,7 @@ const NowPlaying = ({ isCollapsed }) => {
 
   return (
     <div
-      className={`mb-4 flex items-center ${
-        isCollapsed ? 'justify-center' : 'gap-3'
-      } bg-[#2a2a2a] rounded-md p-2`}
+      className={`mb-4 flex items-center justify-center bg-[#2a2a2a] rounded-md p-2`}
     >
       <img
         src={song.albumImageUrl}
@@ -48,7 +46,7 @@ const NowPlaying = ({ isCollapsed }) => {
         title={isCollapsed ? song.title : ''}
       />
       {!isCollapsed && (
-        <div className="flex-1">
+        <div className="flex-1 max-w-60">
           <p className="text-[10px] text-zinc-400">Now Playing</p>
           <p className="text-[13px] truncate text-white">{song.title}</p>
           <p className="text-[11px] truncate text-zinc-400">{song.artist}</p>
