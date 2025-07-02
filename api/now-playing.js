@@ -14,6 +14,7 @@ export default async function handler(req, res) {
 
   const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
 
+  // Step 1: Get access token
   const tokenResponse = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
@@ -28,7 +29,7 @@ export default async function handler(req, res) {
 
   const { access_token } = await tokenResponse.json();
 
-  // ✅ Step 1: Try currently playing
+  // Step 2: Try fetching currently playing
   const nowPlayingResponse = await fetch(
     'https://api.spotify.com/v1/me/player/currently-playing',
     {
@@ -38,8 +39,8 @@ export default async function handler(req, res) {
     }
   );
 
-  // ✅ Step 2: If nothing is playing, show last played track
   if (nowPlayingResponse.status === 204 || nowPlayingResponse.status > 400) {
+    // Step 3: If not playing, fetch last played track
     const recentResponse = await fetch(
       'https://api.spotify.com/v1/me/player/recently-played?limit=1',
       {
@@ -71,7 +72,7 @@ export default async function handler(req, res) {
       }
     }
 
-    // 👇 If no recent track found
+    // No recent track found
     return res.status(200).json({
       isPlaying: false,
       lastPlayedAt: null,
@@ -83,7 +84,7 @@ export default async function handler(req, res) {
     });
   }
 
-  // ✅ Step 3: If something is playing
+  // Step 4: Currently playing track found
   const song = await nowPlayingResponse.json();
 
   const isPlaying = song.is_playing;
@@ -93,8 +94,9 @@ export default async function handler(req, res) {
   const albumImageUrl = song.item.album.images[0].url;
   const songUrl = song.item.external_urls.spotify;
 
-  res.status(200).json({
+  return res.status(200).json({
     isPlaying,
+    lastPlayedAt: null, // 🧠 Set null for consistency when playing
     title,
     artist,
     album,
