@@ -5,16 +5,15 @@ const NowPlaying = ({ isCollapsed }) => {
   const intervalRef = useRef();
 
   const fetchNowPlaying = () => {
-    fetch('/api/now-playing')
-      .then((res) => (res.ok ? res.json() : Promise.reject()))
-      .then((data) => setSong(data))
-      .catch(() => setSong(null));
-      .then((data) => {
-  console.log("Fetched song data:", data);
-  setSong(data);
-})
+  fetch('/api/now-playing')
+    .then((res) => (res.ok ? res.json() : Promise.reject()))
+    .then((data) => {
+      console.log("Fetched song data:", data);
+      setSong(data);
+    })
+    .catch(() => setSong(null));
+};
 
-  };
 
   useEffect(() => {
     fetchNowPlaying();
