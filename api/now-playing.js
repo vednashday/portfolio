@@ -95,12 +95,13 @@ export default async function handler(req, res) {
   const songUrl = song.item.external_urls.spotify;
 
   res.status(200).json({
-    isPlaying,
-    title,
-    artist,
-    album,
-    albumImageUrl,
-    songUrl,
-    lastPlayedAt: null, // Not needed but kept consistent
-  });
+  isPlaying,
+  lastPlayedAt: isPlaying ? null : new Date().toISOString(),
+  title,
+  artist,
+  album,
+  albumImageUrl,
+  songUrl,
+});
+
 }
