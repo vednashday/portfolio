@@ -8,12 +8,12 @@ import {
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import NowPlaying from "./NowPlaying";
-import catimg from "../assets/cats.png";
+import catimg from "../assets/nyan-cat.gif"
 import TerminalIcon from '@mui/icons-material/Terminal';
 
 const Sidebar = ({ toggleTerminal }) => {
   const location = useLocation();
-  const [portfolioOpen, setPortfolioOpen] = useState(true);
+  const [portfolioOpen, setPortfolioOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(window.innerWidth < 640);
 
   const files = [
@@ -23,7 +23,7 @@ const Sidebar = ({ toggleTerminal }) => {
     { name: "contact.html", path: "/contact" },
   ];
 
-  // 🏗 Handle screen resize
+  
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 640) {
@@ -38,16 +38,13 @@ const Sidebar = ({ toggleTerminal }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // 🔥 Portfolio click behavior
+
   const handlePortfolioClick = () => {
     if (isCollapsed) {
-      // If sidebar is collapsed, open it and open portfolio
       setIsCollapsed(false);
       setPortfolioOpen(true);
     } else {
-      // If sidebar is open and portfolio is open, just toggle portfolio
       if (portfolioOpen) {
-        // If on small screen, collapse sidebar when closing portfolio
         if (window.innerWidth < 640) {
           setIsCollapsed(true);
           setPortfolioOpen(false);
@@ -71,7 +68,7 @@ const Sidebar = ({ toggleTerminal }) => {
       <div className="p-2">
         {/* Logo */}
         <div
-          className={`p-2 cursor-pointer hover:opacity-80 ${
+          className={`py-2 cursor-pointer hover:opacity-80 ${
             isCollapsed ? "flex justify-center" : "flex items-center gap-2"
           }`}
           onClick={() => setIsCollapsed(!isCollapsed)}
@@ -80,10 +77,9 @@ const Sidebar = ({ toggleTerminal }) => {
             src={catimg}
             alt="Logo"
             className={`transition-all duration-300 ${
-              isCollapsed ? "w-11 h-11" : "w-10 h-10"
+              isCollapsed ? "w-full h-11" : "w-full h-10"
             } rounded-full`}
           />
-          {!isCollapsed && <span className="text-xl">VPScode</span>}
         </div>
 
         {/* Folder */}
