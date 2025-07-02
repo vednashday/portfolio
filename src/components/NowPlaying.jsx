@@ -5,15 +5,14 @@ const NowPlaying = ({ isCollapsed }) => {
   const intervalRef = useRef();
 
   const fetchNowPlaying = () => {
-  fetch('/api/now-playing')
-    .then((res) => (res.ok ? res.json() : Promise.reject()))
-    .then((data) => {
-      console.log("Fetched song data:", data);
-      setSong(data);
-    })
-    .catch(() => setSong(null));
-};
-
+    fetch('/api/now-playing')
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((data) => {
+        console.log('Fetched song data:', data);
+        setSong(data);
+      })
+      .catch(() => setSong(null));
+  };
 
   useEffect(() => {
     fetchNowPlaying();
@@ -54,6 +53,7 @@ const NowPlaying = ({ isCollapsed }) => {
   }
 
   const albumArt = song.albumImageUrl || '/fallback-art.png';
+  const lastSeen = song.lastPlayedAt ? `Last online ${formatTimeAgo(song.lastPlayedAt)}` : 'Not listening';
 
   return (
     <div className="mb-4 mx-2 flex items-center justify-center bg-[#2a2a2a] rounded-md p-2">
@@ -66,19 +66,11 @@ const NowPlaying = ({ isCollapsed }) => {
       {!isCollapsed && (
         <div className="flex-1 max-w-48 p-2">
           <p className="text-[10px] text-zinc-400">
-            {song.isPlaying
-              ? 'Now Playing'
-              : song.lastPlayedAt
-              ? `Last online ${formatTimeAgo(song.lastPlayedAt)}`
-              : 'Not listening'}
+            {song.isPlaying ? 'Now Playing' : lastSeen}
           </p>
-          <p className="text-[13px] truncate text-white">
-            {song.title || 'None'}
-          </p>
-          <p className="text-[11px] truncate text-zinc-400">
-            {song.artist || ''}
-          </p>
-          {song.songUrl && song.isPlaying && (
+          <p className="text-[13px] truncate text-white">{song.title || 'None'}</p>
+          <p className="text-[11px] truncate text-zinc-400">{song.artist || ''}</p>
+          {song.songUrl && (
             <a
               href={song.songUrl}
               target="_blank"
