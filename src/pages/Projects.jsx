@@ -33,7 +33,7 @@ const Projects = () => {
             onClick={() => openModal(project)}
           >
             <div
-              className="bg-center bg-no-repeat bg-cover w-full h-64 "
+              className="bg-center bg-no-repeat bg-cover w-full h-54 "
               style={{ backgroundImage: `url(${project.image})` }}
             ></div>
             <div className="p-2 text-white bg-gradient-to-b from-transparent to-black/40">

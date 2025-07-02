@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaChevronRight, FaChevronDown, FaFolder, FaFolderOpen, FaTerminal } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
+import NowPlaying from "./NowPlaying";
 
 const Sidebar = ({ toggleTerminal }) => { // Receive toggleTerminal as a prop
     const location = useLocation();
@@ -16,6 +17,10 @@ const Sidebar = ({ toggleTerminal }) => { // Receive toggleTerminal as a prop
 
     return (
         <div className="w-64 bg-[#1e1e1e] text-white font-mono text-sm h-full border-r border-zinc-700">
+            <div className="p-2 px-5 text-2xl ">
+                VPScode
+            </div>
+            
             <div className="p-2">
                 
                 <button
@@ -58,6 +63,8 @@ const Sidebar = ({ toggleTerminal }) => { // Receive toggleTerminal as a prop
                         <span className="text-zinc-200">Toggle Terminal</span>
                     </button>
                 </div>
+
+                <NowPlaying/>
             </div>
         </div>
     );
