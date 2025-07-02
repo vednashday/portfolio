@@ -64,8 +64,9 @@ const Sidebar = ({ toggleTerminal }) => { // Receive toggleTerminal as a prop
                     </button>
                 </div>
 
-                <NowPlaying/>
+                
             </div>
+            <NowPlaying/>
         </div>
     );
 };

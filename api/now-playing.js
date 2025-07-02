@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 export default async function handler(req, res) {
   const {
     SPOTIFY_CLIENT_ID: client_id,
