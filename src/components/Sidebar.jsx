@@ -70,20 +70,20 @@ const Sidebar = ({ toggleTerminal }) => {
       <div className="p-2">
         {/* Logo */}
         <div
-  className={`p-2 cursor-pointer hover:opacity-80 ${
-    isCollapsed ? "flex justify-center" : "flex items-center gap-2"
-  }`}
-  onClick={() => setIsCollapsed(!isCollapsed)}
->
-  <img
-    src={catimg}
-    alt="Logo"
-    className={`transition-all duration-300 ${
-      isCollapsed ? "w-10 h-10" : "w-10 h-10"
-    } rounded-full`}
-  />
-  {!isCollapsed && <span className="text-xl">VPScode</span>}
-</div>
+          className={`p-2 cursor-pointer hover:opacity-80 ${
+            isCollapsed ? "flex justify-center" : "flex items-center gap-2"
+          }`}
+          onClick={() => setIsCollapsed(!isCollapsed)}
+        >
+          <img
+            src={catimg}
+            alt="Logo"
+            className={`transition-all duration-300 ${
+              isCollapsed ? "w-10 h-10" : "w-10 h-10"
+            } rounded-full`}
+          />
+          {!isCollapsed && <span className="text-xl">VPScode</span>}
+        </div>
 
         {/* Folder */}
         <button
@@ -135,7 +135,7 @@ const Sidebar = ({ toggleTerminal }) => {
         </div>
       </div>
 
-      <NowPlaying />
+      <NowPlaying isCollapsed={isCollapsed} />
     </div>
   );
 };
