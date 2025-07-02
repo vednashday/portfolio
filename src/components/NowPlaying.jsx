@@ -61,7 +61,7 @@ const NowPlaying = ({ isCollapsed }) => {
       <img
         src={albumArt}
         alt="Album"
-        className={` ${isCollapsed ? `w-12 h-10` : `w-10 h-10` } rounded-md`}
+        className={` ${isCollapsed ? `w-12 h-12` : `w-10 h-10` } rounded-md`}
         title={song.title || "Not listening"}
       />
       {!isCollapsed && (

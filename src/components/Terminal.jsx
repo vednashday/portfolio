@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import nyancat from "../assets/nyan-cat.gif";
 
 const Terminal = () => {
   const [input, setInput] = useState(""); 
@@ -26,7 +27,7 @@ const Terminal = () => {
     let response;
     switch (command.toLowerCase()) {
       case "help":
-        response = "Available commands: help, clear, about, ls, projects";
+        response = "Available commands: help, clear, about, ls, projects, nyan";
         break;
       case "about":
         response = "This is a VS Code Themed Portfolio. Type 'help' for commands.";
@@ -40,6 +41,15 @@ const Terminal = () => {
       case "projects":
         response = "1. Pinterest Clone\n2. VS Code Portfolio\n3. Image Manager\n4. ProfitWise\n5. MyProfitWise\n6. BuzzRoom";
         break;
+      case "nyan":
+        response = (
+    <img
+      src = {nyancat}
+      alt="Nyan Cat"
+      className="w-32 h-auto mt-2"
+    />
+  );
+  break;
       default:
         response = `Command not found: ${command}`;
     }
