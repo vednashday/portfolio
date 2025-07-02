@@ -29,7 +29,7 @@ export default async function handler(req, res) {
 
   const { access_token } = await tokenResponse.json();
 
-  // Step 2: Try fetching currently playing
+  // Step 2: Try getting currently playing track
   const nowPlayingResponse = await fetch(
     'https://api.spotify.com/v1/me/player/currently-playing',
     {
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
   );
 
   if (nowPlayingResponse.status === 204 || nowPlayingResponse.status > 400) {
-    // Step 3: If not playing, fetch last played track
+    // Step 3: Fallback to most recently played track
     const recentResponse = await fetch(
       'https://api.spotify.com/v1/me/player/recently-played?limit=1',
       {
@@ -52,9 +52,9 @@ export default async function handler(req, res) {
 
     if (recentResponse.ok) {
       const recentData = await recentResponse.json();
-      const lastPlayed = recentData.items?.[0];
 
-      if (lastPlayed) {
+      if (recentData?.items?.length > 0) {
+        const lastPlayed = recentData.items[0];
         const {
           track: { name, artists, album, external_urls },
           played_at,
@@ -72,7 +72,7 @@ export default async function handler(req, res) {
       }
     }
 
-    // No recent track found
+    // If no recent data is available
     return res.status(200).json({
       isPlaying: false,
       lastPlayedAt: null,
@@ -84,7 +84,7 @@ export default async function handler(req, res) {
     });
   }
 
-  // Step 4: Currently playing track found
+  // Step 4: Something is currently playing
   const song = await nowPlayingResponse.json();
 
   const isPlaying = song.is_playing;
@@ -94,13 +94,13 @@ export default async function handler(req, res) {
   const albumImageUrl = song.item.album.images[0].url;
   const songUrl = song.item.external_urls.spotify;
 
-  return res.status(200).json({
+  res.status(200).json({
     isPlaying,
-    lastPlayedAt: null, // 🧠 Set null for consistency when playing
     title,
     artist,
     album,
     albumImageUrl,
     songUrl,
+    lastPlayedAt: null, // Not needed but kept consistent
   });
 }
