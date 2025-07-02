@@ -1,40 +1,67 @@
 import { useEffect, useState } from 'react';
 
-const NowPlaying = () => {
+const NowPlaying = ({ isCollapsed }) => {
   const [song, setSong] = useState(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetch('/api/now-playing')
-      .then((res) => res.json())
-      .then((data) => setSong(data));
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed to fetch');
+        return res.json();
+      })
+      .then((data) => setSong(data))
+      .catch(() => setError(true));
   }, []);
 
-  if (!song) return <p>Loading...</p>;
+  if (error || !song) {
+    return (
+      <div className="mb-4 flex justify-center">
+        <div className="w-10 h-10 rounded-md bg-zinc-700 animate-pulse" />
+      </div>
+    );
+  }
 
   if (!song.isPlaying) {
-    return <p>Not listening to anything right now.</p>;
+    return (
+      <div className="mb-4 flex justify-center">
+        <img
+          src={song.albumImageUrl}
+          alt="Album"
+          className="w-10 h-10 rounded-md"
+          title="Not listening to anything"
+        />
+      </div>
+    );
   }
 
   return (
-    <div className="mb-7 now-playing flex items-center gap-4 p-2">
+    <div
+      className={`mb-4 flex items-center ${
+        isCollapsed ? 'justify-center' : 'gap-3'
+      } bg-[#2a2a2a] rounded-md p-2`}
+    >
       <img
         src={song.albumImageUrl}
         alt="Album Cover"
-        className="w-16 h-16 rounded-md"
+        className="w-10 h-10 rounded-md"
+        title={isCollapsed ? song.title : ''}
       />
-      <div>
-        <p className="text-sm text-gray-500">Now Playing</p>
-        <p className="font-semibold">{song.title}</p>
-        <p className="text-gray-400">{song.artist}</p>
-        <a
-          href={song.songUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-500 hover:underline text-sm"
-        >
-          Open on Spotify
-        </a>
-      </div>
+      {!isCollapsed && (
+        <div className="flex-1">
+          <p className="text-[10px] text-zinc-400">Now Playing</p>
+          <p className="text-[13px] truncate text-white">{song.title}</p>
+          <p className="text-[11px] truncate text-zinc-400">{song.artist}</p>
+          <a
+            href={song.songUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:underline text-[10px]"
+          >
+            Open on Spotify
+          </a>
+        </div>
+      )}
     </div>
   );
 };
