@@ -19,9 +19,11 @@ const skills = [
         "Node.js",
         "Express.js",
         "RESTful APIs",
-        "Authentication (JWT, bcrypt)",
+        "Authentication",
         "MongoDB",
         "Mongoose",
+        "SQL",
+        "Firebase",
       ],
     },
     {
@@ -31,6 +33,7 @@ const skills = [
         "Operating Systems",
         "Computer Networks",
         "DSA",
+        "Software Engineering"
       ],
     },
     {
@@ -42,6 +45,9 @@ const skills = [
         "Postman",
         "npm",
         "Material UI (MUI)",
+        "Figma",
+        "Framer",
+        "Webflow"
       ],
     },
   ];
