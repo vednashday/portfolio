@@ -9,6 +9,11 @@ const NowPlaying = ({ isCollapsed }) => {
       .then((res) => (res.ok ? res.json() : Promise.reject()))
       .then((data) => setSong(data))
       .catch(() => setSong(null));
+      .then((data) => {
+  console.log("Fetched song data:", data);
+  setSong(data);
+})
+
   };
 
   useEffect(() => {
