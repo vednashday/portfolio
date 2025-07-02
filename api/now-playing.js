@@ -37,6 +37,11 @@ export default async function handler(req, res) {
     return res.status(200).json({ isPlaying: false });
   }
 
+  if (!client_id || !client_secret || !refresh_token) {
+  return res.status(500).json({ error: 'Missing Spotify ENV variables' });
+}
+
+
   const song = await nowPlayingResponse.json();
 
   const isPlaying = song.is_playing;

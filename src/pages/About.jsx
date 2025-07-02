@@ -4,7 +4,7 @@ import { Typewriter } from "react-simple-typewriter";
 
 const About = () => {
   return (
-    <div className="text-white text-lg p-6 w-[80%] rounded-lg font-mono text-sm">
+    <div className="text-white p-6 w-[80%] rounded-lg font-mono text-sm">
       <h2 className="text-2xl text-[#569CD6] mb-10">// Hi, I'm Vedansh Pratap Singh</h2>
 
       <p className="flex items-center gap-1 text-green-600">
