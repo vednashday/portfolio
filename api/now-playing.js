@@ -38,9 +38,7 @@ export default async function handler(req, res) {
     }
   );
 
-  // If nothing is playing
   if (nowPlayingResponse.status === 204 || nowPlayingResponse.status > 400) {
-    // Get most recently played track
     const recentResponse = await fetch(
       'https://api.spotify.com/v1/me/player/recently-played?limit=1',
       {
@@ -73,15 +71,15 @@ export default async function handler(req, res) {
           album: album.name,
           albumImageUrl: album.images?.[0]?.url,
           songUrl: external_urls.spotify,
-        });
+        })
+        
+        console.log(lastPlayedAt);
       }
     }
 
-    // If we can't get recent
     return res.status(200).json({ isPlaying: false });
   }
 
-  // Now playing
   const song = await nowPlayingResponse.json();
 
   const isPlaying = song.is_playing;
