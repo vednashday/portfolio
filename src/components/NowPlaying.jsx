@@ -16,7 +16,7 @@ const NowPlaying = () => {
   }
 
   return (
-    <div className="now-playing flex items-center gap-4">
+    <div className="now-playing flex items-center gap-4 p-2">
       <img
         src={song.albumImageUrl}
         alt="Album Cover"
