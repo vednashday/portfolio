@@ -2,16 +2,27 @@ import { useEffect, useState, useRef } from 'react';
 
 const NowPlaying = ({ isCollapsed }) => {
   const [song, setSong] = useState(null);
+  const [lastSeenAt, setLastSeenAt] = useState(null);
+
   const intervalRef = useRef();
 
   const fetchNowPlaying = () => {
     fetch('/api/now-playing')
       .then((res) => (res.ok ? res.json() : Promise.reject()))
       .then((data) => {
-        console.log("Fetched song data:", data);
-        setSong(data);
-      })
-      .catch(() => setSong(null));
+  console.log("Fetched song data:", data);
+  setSong(data);
+
+  if (!data.isPlaying && data.lastPlayedAt) {
+    // Only update this once when not playing
+    setLastSeenAt((prev) => prev || new Date(data.lastPlayedAt));
+  }
+
+  if (data.isPlaying) {
+    setLastSeenAt(null); // Reset if song is playing again
+  }
+})
+
   };
 
   useEffect(() => {
@@ -65,12 +76,12 @@ const NowPlaying = ({ isCollapsed }) => {
       {!isCollapsed && (
         <div className="flex-1 max-w-48 p-2">
           <p className="text-[10px] text-zinc-400">
-            {song.isPlaying
-              ? 'Now Playing'
-              : song.lastPlayedAt
-              ? `Last online ${formatTimeAgo(song.lastPlayedAt)}`
-              : 'Not listening'}
-          </p>
+  {song.isPlaying
+    ? 'Now Playing'
+    : lastSeenAt
+    ? `Last online ${formatTimeAgo(lastSeenAt)}`
+    : 'Not listening'}
+</p>
           <p className="text-[13px] truncate text-white">{song.title || 'None'}</p>
           <p className="text-[11px] truncate text-zinc-400">{song.artist || ''}</p>
           {song.songUrl && (
