@@ -10,7 +10,7 @@ const Start = () => {
                 <h4 className="text-2xl opacity-70">Software Engineer</h4>
                 <p className="text-lg text-gray-400 mt-4">
                     I'm a software engineer passionate about building beautiful, performant web apps.
-                    I specialize in React, Node.js, and I love creating developer-centric experiences.
+                    I specialize in MERN stack and I love creating developer-centric experiences.
                 </p>
                 <p className="text-md font-mono text-purple-300 mt-4">// tech stack:</p>
                 <ul className="list-disc list-inside text-gray-300 text-md">
