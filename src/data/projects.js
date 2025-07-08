@@ -24,7 +24,7 @@ const projects = [
     challenges: "Handling real-time updates and optimizing image load times for better UX.",
     image: placeImage,
     link: "https://github.com/vednashday/YourInterest",
-    live: "#"
+    live: "https://yourinterest.onrender.com/register"
   },
   {
     title: "VS Code Portfolio Website",
