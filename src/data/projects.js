@@ -4,6 +4,7 @@ import portImage from '../assets/portfolio1.png';
 import EImage from '../assets/web.png';
 import MangeImage from '../assets/imgManager.png';
 import BuzzroomImage from '../assets/BuzzRoom.png';
+import TwillerImage from '../assets/twitter.png';
 
 const projects = [
   {
@@ -16,6 +17,16 @@ const projects = [
     link: "https://github.com/vednashday/Buzzroom",
     live: "https://buzzroom.onrender.com"
   },
+  {
+  title: "Twiller - Twitter Clone with Voice Tweets & Subscriptions",
+  description: "A full-stack Twitter clone with modern features like voice tweets, AI-based suggestions, email + OTP-based password recovery, and Razorpay-powered subscription limits.",
+  techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "Firebase", "Razorpay", "Cloudinary", "TailwindCSS"],
+  role: "Designed and developed both frontend and backend, integrated voice tweet recording and waveform visualization, secured authentication with Firebase, and implemented subscription plans with time-restricted payments.",
+  challenges: "Managing audio uploads with time and size constraints, building a custom audio recorder with live waveform, implementing OTP verification for uploads and password resets, and integrating Razorpay with cron-based restrictions.",
+  image: TwillerImage,
+  link: "https://github.com/vednashday/twiller-v2",
+  live: "https://twiller-cloned-twitter.netlify.app/login"
+},
   {
     title: "YourInterest — Pinterest Clone",
     description: "A full-featured clone of Pinterest built with Node.js Users can upload, save, and browse images across dynamic boards with a fully responsive interface.",
