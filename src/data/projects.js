@@ -39,7 +39,7 @@ const projects = [
   },
   {
     title: "VS Code Portfolio Website",
-    description: "A portfolio designed to look and feel like Visual Studio Code – complete with tabs, file explorer, and a terminal-inspired contact form.",
+    description: "A portfolio designed to look and feel like Visual Studio Code complete with tabs, file explorer, and a terminal-inspired contact form.",
     techStack: ["React.js", "Tailwind CSS", "Framer Motion"],
     role: "Designed and developed the entire site from scratch, focusing on minimal yet creative UI/UX.",
     challenges: "Building a complex layout while keeping it responsive across devices.",
