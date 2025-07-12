@@ -2,19 +2,17 @@ import { useState, useEffect, useRef } from "react";
 import nyancat from "../assets/nyan-cat.gif";
 
 const Terminal = () => {
-  const [input, setInput] = useState(""); 
-  const [output, setOutput] = useState([]); 
-  const terminalRef = useRef(null); 
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState([]);
+  const terminalRef = useRef(null);
 
-  
   useEffect(() => {
     setOutput([
       "Welcome to my portfolio terminal!",
-      "Type 'help' for available commands."
+      "Type 'help' for available commands.",
     ]);
   }, []);
 
-  
   const handleInput = (e) => {
     if (e.key === "Enter") {
       processCommand(input);
@@ -22,15 +20,15 @@ const Terminal = () => {
     }
   };
 
-
   const processCommand = (command) => {
     let response;
     switch (command.toLowerCase()) {
       case "help":
-        response = "Available commands: help, clear, about, ls, projects, nyan";
+        response = "Available commands: help, clear, about, ls, projects, nyan, rr";
         break;
       case "about":
-        response = "This is a VS Code Themed Portfolio. Type 'help' for commands.";
+        response =
+          "This is a VS Code Themed Portfolio. Type 'help' for commands.";
         break;
       case "clear":
         setOutput([]);
@@ -39,17 +37,26 @@ const Terminal = () => {
         response = "aboutMe.js, projects.js, skills.json, contact.html";
         break;
       case "projects":
-        response = "1. Pinterest Clone\n2. VS Code Portfolio\n3. Image Manager\n4. ProfitWise\n5. MyProfitWise\n6. BuzzRoom";
+        response =
+          "1. Pinterest Clone\n2. VS Code Portfolio\n3. Image Manager\n4. ProfitWise\n5. MyProfitWise\n6. BuzzRoom\n7. Twiller";
+        break;
+      case "rr":
+        response = (
+          <a
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            target="_blank"
+            rel="noreferrer"
+            className="text-blue-400 underline"
+          >
+            Never gonna give you up 🎵
+          </a>
+        );
         break;
       case "nyan":
         response = (
-    <img
-      src = {nyancat}
-      alt="Nyan Cat"
-      className="w-32 h-auto mt-2"
-    />
-  );
-  break;
+          <img src={nyancat} alt="Nyan Cat" className="w-32 h-auto mt-2" />
+        );
+        break;
       default:
         response = `Command not found: ${command}`;
     }
