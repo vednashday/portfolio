@@ -12,8 +12,7 @@ Welcome to my personal portfolio website! This project showcases my skills, proj
 - **Vite** – Build tool for fast development
 
 ## 📸 Preview
-![image](https://github.com/user-attachments/assets/cfda8f91-cfe3-42a0-a99a-9120da2052ca)
-
+<img width="1919" height="882" alt="image" src="https://github.com/user-attachments/assets/23746304-19eb-4a3f-b204-04f7b0c93b96" />
 
 ## ✨ Features
 
