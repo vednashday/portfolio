@@ -21,6 +21,7 @@ Welcome to my personal portfolio website! This project showcases my skills, proj
 - Project showcase with external links
 - Functional contact form with email integration
 - Dark-themed interface for better aesthetics
+- Linking Spotify API now shows currently playing and last online.
 
 ## 📁 Folder Structure
 
