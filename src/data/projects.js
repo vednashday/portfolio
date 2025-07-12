@@ -29,13 +29,13 @@ const projects = [
 },
   {
     title: "YourInterest — Pinterest Clone",
-    description: "A full-featured clone of Pinterest built with Node.js Users can upload, save, and browse images across dynamic boards with a fully responsive interface.",
+    description: "A full-featured clone of Pinterest built with Node.js Users can upload, save, and browse images across dynamic boards,Currently working on responsiveness.",
     techStack: ["Node.js", "Express.js", "Tailwind CSS" , "EJS" , "MongoDB"],
     role: "Built custom upload logic, responsive layouts, and integrated Firebase authentication & storage.",
     challenges: "Handling real-time updates and optimizing image load times for better UX.",
     image: placeImage,
     link: "https://github.com/vednashday/YourInterest",
-    live: "#"
+    live: "https://yourinterest.onrender.com/register"
   },
   {
     title: "VS Code Portfolio Website",
