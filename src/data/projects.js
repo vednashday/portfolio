@@ -18,7 +18,7 @@ const projects = [
     live: "https://buzzroom.onrender.com"
   },
   {
-  title: "Twiller - Twitter Clone with Voice Tweets & Subscriptions",
+  title: "Twiller - Twitter Clone",
   description: "A full-stack Twitter clone with modern features like voice tweets, AI-based suggestions, email + OTP-based password recovery, and Razorpay-powered subscription limits.",
   techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "Firebase", "Razorpay", "Cloudinary", "TailwindCSS"],
   role: "Designed and developed both frontend and backend, integrated voice tweet recording and waveform visualization, secured authentication with Firebase, and implemented subscription plans with time-restricted payments.",
