@@ -25,7 +25,7 @@ const projects = [
   challenges: "Managing audio uploads with time and size constraints, building a custom audio recorder with live waveform, implementing OTP verification for uploads and password resets, and integrating Razorpay with cron-based restrictions.",
   image: TwillerImage,
   link: "https://github.com/vednashday/twiller-v2",
-  live: "https://twiller-cloned-twitter.netlify.app/login"
+  live: "https://twiller-cloned-twitter.netlify.app/"
 },
   {
     title: "YourInterest — Pinterest Clone",
@@ -35,7 +35,7 @@ const projects = [
     challenges: "Handling real-time updates and optimizing image load times for better UX.",
     image: placeImage,
     link: "https://github.com/vednashday/YourInterest",
-    live: "https://yourinterest.onrender.com/register"
+    live: "https://yourinterest.onrender.com/"
   },
   {
     title: "VS Code Portfolio Website",
