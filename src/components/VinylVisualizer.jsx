@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useTexture } from '@react-three/drei';
-import { Vinyl } from '../Vinyl'; // Make sure this path is correct
+import { Vinyl } from '../../Vinyl';
 
-export function VinylVisualizer({ isPlaying, albumArtUrl }) {
+export default function VinylVisualizer({ isPlaying, albumArtUrl }) {
   const texture = useTexture(albumArtUrl || '/fallback-art.png');
 
   const modelRef = useRef();
