@@ -1,35 +1,30 @@
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, useTexture } from '@react-three/drei';
+import { Vinyl } from '../Vinyl'; // Make sure this path is correct
 
-function SpinningBox() {
-  const meshRef = useRef();
+export function VinylVisualizer({ isPlaying, albumArtUrl }) {
+  const texture = useTexture(albumArtUrl || '/fallback-art.png');
+
+  const modelRef = useRef();
 
   useFrame(() => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x += 0.01;
-      meshRef.current.rotation.y += 0.01;
+    if (isPlaying && modelRef.current) {
+      modelRef.current.rotation.y += 0.005;
     }
   });
 
   return (
-    <mesh ref={meshRef}>
-      <boxGeometry args={[2, 2, 2]} />
-      <meshStandardMaterial color={'royalblue'} />
-    </mesh>
-  );
-}
+    <div style={{ height: '250px', width: '100%', marginBottom: '1rem' }}>
+      <Canvas camera={{ position: [0, 2, 4], fov: 50 }}>
+        <ambientLight intensity={1} />
+        <directionalLight position={[5, 5, 5]} intensity={1.5} />
 
-export default function VinylVisualizer() {
-  return (
-    <div style={{ height: '400px', width: '100%' }}>
-      <Canvas>
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[2, 5, 5]} intensity={1} />
-
-        <SpinningBox />
         
-        <OrbitControls />
+        <Vinyl modelRef={modelRef} albumTexture={texture} />
+        
+        
+        <OrbitControls enableZoom={false} />
       </Canvas>
     </div>
   );
