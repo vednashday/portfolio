@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   FaChevronRight,
   FaChevronDown,
@@ -10,11 +10,46 @@ import { Link, useLocation } from "react-router-dom";
 import NowPlaying from "./NowPlaying";
 import catimg from "../assets/nyan-cat.gif"
 import TerminalIcon from '@mui/icons-material/Terminal';
-
+import VinylVisualizer from "./VinylVisualizer";
 const Sidebar = ({ toggleTerminal }) => {
   const location = useLocation();
   const [portfolioOpen, setPortfolioOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(window.innerWidth < 640);
+  const [song, setSong] = useState(null);
+  const [lastSeenAt, setLastSeenAt] = useState(null);
+  const intervalRef = useRef();
+
+  const fetchNowPlaying = () => {
+    fetch('/api/now-playing')
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((data) => {
+        setSong(data);
+        if (!data.isPlaying && data.lastPlayedAt) {
+          setLastSeenAt((prev) => prev || new Date(data.lastPlayedAt));
+        }
+        if (data.isPlaying) {
+          setLastSeenAt(null);
+        }
+      });
+  };
+
+  useEffect(() => {
+    fetchNowPlaying();
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        fetchNowPlaying();
+        intervalRef.current = setInterval(fetchNowPlaying, 30000);
+      } else {
+        clearInterval(intervalRef.current);
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+    handleVisibility();
+    return () => {
+      clearInterval(intervalRef.current);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
+  }, []);
 
   const files = [
     { name: "aboutMe.js", path: "/about" },
@@ -132,7 +167,29 @@ const Sidebar = ({ toggleTerminal }) => {
         </div>
       </div>
 
-      <NowPlaying isCollapsed={isCollapsed} />
+      <div className="p-2">
+        {song ? (
+          <>
+            {/* We only show the 3D visualizer when the sidebar is open */}
+            {!isCollapsed && (
+              <VinylVisualizer
+                isPlaying={song.isPlaying}
+                albumArtUrl={song.albumImageUrl}
+              />
+            )}
+            <NowPlaying
+              song={song}
+              lastSeenAt={lastSeenAt}
+              isCollapsed={isCollapsed}
+            />
+          </>
+        ) : (
+          // Loading Skeleton
+          <div className="mb-4 flex justify-center">
+            <div className="w-10 h-10 rounded-md bg-zinc-700 animate-pulse" />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
