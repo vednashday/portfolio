@@ -15,7 +15,7 @@ const projects = [
     challenges: "Integrating and syncing data from two different APIs, implementing a robust fallback system for missing 3D model assets, automatically scaling and centering 3D models of varying sizes, and ensuring a smooth, responsive layout across all devices.",
     image: "PokeLibImage",
     link: "https://github.com/vednashday/PokeLib_3D",
-    live: "https://pokelib-3d.vercel.app/"
+    live: "https://poke-lib-3-d.vercel.app/"
   },
   {
     title: "Buzzroom - Realtime Social App",
