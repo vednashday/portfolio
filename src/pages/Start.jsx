@@ -17,15 +17,7 @@ const Start = () => {
                     I specialize in the MERN stack and love creating developer-centric experiences.
                 </p>
 
-                <p className="text-sm md:text-md font-mono text-purple-300 mt-4">
-                    // tech stack:
-                </p>
-                <ul className="list-disc list-inside text-gray-300 text-sm md:text-md">
-                    <li>React, Redux, Vite</li>
-                    <li>Node.js, Express</li>
-                    <li>MongoDB, Firebase</li>
-                    <li>Tailwind CSS, Figma</li>
-                </ul>
+                
             </div>
 
             {/* Right Section */}

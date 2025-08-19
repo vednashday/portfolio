@@ -3,6 +3,11 @@ const skills = [
     {
       category: "Frontend Development",
       skills: [
+        "Next.js",
+        "TypeScript",
+        "Three.js",
+        "React Three Fiber",
+        "Drei",
         "React.js",
         "HTML5",
         "CSS3",
@@ -24,6 +29,9 @@ const skills = [
         "Mongoose",
         "SQL",
         "Firebase",
+        "WebRTC",
+        "Socket.IO",
+        "OAuth",
       ],
     },
     {
@@ -33,7 +41,15 @@ const skills = [
         "Operating Systems",
         "Computer Networks",
         "DSA",
-        "Software Engineering"
+        "Software Engineering",
+        "Software Design Patterns",
+        "Algorithms",
+        "Data Structures",
+        "Problem Solving",
+        "System Design",
+        "Software Testing",
+        "Version Control (Git)",
+        "CI/CD"
       ],
     },
     {
@@ -47,7 +63,10 @@ const skills = [
         "Material UI (MUI)",
         "Figma",
         "Framer",
-        "Webflow"
+        "Webflow",
+        "Vercel",
+        "Render",
+        "Netlify",
       ],
     },
   ];

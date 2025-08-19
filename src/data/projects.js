@@ -8,29 +8,39 @@ import TwillerImage from '../assets/twitter.png';
 
 const projects = [
   {
+    title: "PokeLib 3D - Interactive 3D Pokedex",
+    description: "A responsive and modern Pokedex web application that allows users to browse a library of Pokemon, view detailed stats, and interact with high-quality 3D models in real-time.",
+    techStack: ["Next.js","TypeScript", "React.js", "React Three Fiber","Three.js", "Drei", "Tailwind CSS", "Vercel"],
+    role: "Developed a dynamic, responsive user interface with Next.js and Tailwind CSS. Integrated two separate APIs to fetch and display both detailed Pokémon stats and interactive 3D models. Implemented robust error handling and a custom 3D loading experience.",
+    challenges: "Integrating and syncing data from two different APIs, implementing a robust fallback system for missing 3D model assets, automatically scaling and centering 3D models of varying sizes, and ensuring a smooth, responsive layout across all devices.",
+    image: "PokeLibImage",
+    link: "https://github.com/vednashday/PokeLib_3D",
+    live: "https://pokelib-3d.vercel.app/"
+  },
+  {
     title: "Buzzroom - Realtime Social App",
     description: "A full-stack social app that enables users to add friends, chat in real-time, and video call with seamless connectivity.",
     techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "Socket.IO", "WebRTC", "TailwindCSS"],
     role: "Built and integrated real-time messaging and video calling features using Socket.IO and WebRTC, while managing user sessions and scalable chat architecture.",
     challenges: "Ensuring smooth real-time communication across devices, handling peer-to-peer video calls, and syncing friend requests/messages with server state.",
-    image: BuzzroomImage, 
+    image: BuzzroomImage,
     link: "https://github.com/vednashday/Buzzroom",
     live: "https://buzzroom.onrender.com"
   },
   {
-  title: "Twiller - Twitter Clone",
-  description: "A full-stack Twitter clone with modern features like voice tweets, AI-based suggestions, email + OTP-based password recovery, and Razorpay-powered subscription limits.",
-  techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "Firebase", "Razorpay", "Cloudinary", "TailwindCSS"],
-  role: "Designed and developed both frontend and backend, integrated voice tweet recording and waveform visualization, secured authentication with Firebase, and implemented subscription plans with time-restricted payments.",
-  challenges: "Managing audio uploads with time and size constraints, building a custom audio recorder with live waveform, implementing OTP verification for uploads and password resets, and integrating Razorpay with cron-based restrictions.",
-  image: TwillerImage,
-  link: "https://github.com/vednashday/twiller-v2",
-  live: "https://twiller-cloned-twitter.netlify.app/"
-},
+    title: "Twiller - Twitter Clone",
+    description: "A full-stack Twitter clone with modern features like voice tweets, AI-based suggestions, email + OTP-based password recovery, and Razorpay-powered subscription limits.",
+    techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "Firebase", "Razorpay", "Cloudinary", "TailwindCSS"],
+    role: "Designed and developed both frontend and backend, integrated voice tweet recording and waveform visualization, secured authentication with Firebase, and implemented subscription plans with time-restricted payments.",
+    challenges: "Managing audio uploads with time and size constraints, building a custom audio recorder with live waveform, implementing OTP verification for uploads and password resets, and integrating Razorpay with cron-based restrictions.",
+    image: TwillerImage,
+    link: "https://github.com/vednashday/twiller-v2",
+    live: "https://twiller-cloned-twitter.netlify.app/"
+  },
   {
     title: "YourInterest — Pinterest Clone",
     description: "A full-featured clone of Pinterest built with Node.js Users can upload, save, and browse images across dynamic boards,Currently working on responsiveness.",
-    techStack: ["Node.js", "Express.js", "Tailwind CSS" , "EJS" , "MongoDB"],
+    techStack: ["Node.js", "Express.js", "Tailwind CSS", "EJS", "MongoDB"],
     role: "Built custom upload logic, responsive layouts, and integrated Firebase authentication & storage.",
     challenges: "Handling real-time updates and optimizing image load times for better UX.",
     image: placeImage,
