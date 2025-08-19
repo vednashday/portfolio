@@ -30,7 +30,7 @@ function Scene({ isPlaying, albumArtUrl }) {
 export default function VinylVisualizer({ isPlaying, albumArtUrl }) {
   return (
     <div style={{ height: '250px', width: '100%', marginBottom: '1rem' }}>
-      <Canvas camera={{ position: [0, 2, 4], fov: 50 }}>
+      <Canvas camera={{ position: [0, 0, 3]}}>
         <Scene isPlaying={isPlaying} albumArtUrl={albumArtUrl} />
       </Canvas>
     </div>
