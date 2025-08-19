@@ -32,7 +32,7 @@ function Scene({ isPlaying, albumArtUrl }) {
 
   useFrame(() => {
     if (isPlaying && modelRef.current) {
-      modelRef.current.rotation.y += 0.005;
+      modelRef.current.rotation.z += 0.005;
     }
   });
 
@@ -52,7 +52,7 @@ function Scene({ isPlaying, albumArtUrl }) {
 export default function VinylVisualizer({ isPlaying, albumArtUrl }) {
   return (
     <div style={{ height: '250px', width: '100%', marginBottom: '1rem' }}>
-      <Canvas camera={{ position: [0, 0, 3]}}>
+      <Canvas camera={{ position: [0, 0, -20]}}>
         <Scene isPlaying={isPlaying} albumArtUrl={albumArtUrl} />
       </Canvas>
     </div>
