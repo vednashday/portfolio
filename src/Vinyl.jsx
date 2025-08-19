@@ -2,7 +2,7 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function Vinyl({ modelRef, albumTexture, ...props }) {
-  const { nodes, materials } = useGLTF('/public/vinyl.glb')
+  const { nodes, materials } = useGLTF('/vinyl.glb')
 
   // 1. IMPORTANT: We clone the original material.
   // This lets us change the texture without breaking the original.
