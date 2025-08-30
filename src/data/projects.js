@@ -5,7 +5,6 @@ import EImage from '../assets/web.png';
 import MangeImage from '../assets/imgManager.png';
 import BuzzroomImage from '../assets/BuzzRoom.png';
 import TwillerImage from '../assets/twitter.png';
-import PokeLibImage from '../assets/pokelib.png';
 
 const projects = [
   {
@@ -14,7 +13,7 @@ const projects = [
     techStack: ["Next.js","TypeScript", "React.js", "React Three Fiber","Three.js", "Drei", "Tailwind CSS", "Vercel"],
     role: "Developed a dynamic, responsive user interface with Next.js and Tailwind CSS. Integrated two separate APIs to fetch and display both detailed Pokémon stats and interactive 3D models. Implemented robust error handling and a custom 3D loading experience.",
     challenges: "Integrating and syncing data from two different APIs, implementing a robust fallback system for missing 3D model assets, automatically scaling and centering 3D models of varying sizes, and ensuring a smooth, responsive layout across all devices.",
-    image: PokeLibImage,
+    image: "PokeLibImage",
     link: "https://github.com/vednashday/PokeLib_3D",
     live: "https://poke-lib-3-d.vercel.app/"
   },
