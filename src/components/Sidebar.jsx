@@ -171,13 +171,6 @@ const Sidebar = ({ toggleTerminal }) => {
       <div className="p-2">
         {song ? (
           <>
-            {/* We only show the 3D visualizer when the sidebar is open */}
-            {!isCollapsed && (
-              <VinylVisualizer
-                isPlaying={song.isPlaying}
-                albumArtUrl={song.albumImageUrl}
-              />
-            )}
             <NowPlaying
               song={song}
               lastSeenAt={lastSeenAt}
