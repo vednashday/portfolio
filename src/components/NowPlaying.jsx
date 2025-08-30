@@ -71,8 +71,8 @@ const NowPlaying = ({ isCollapsed }) => {
   if (!song) {
     return (
       <div className="mb-4 flex justify-center">
-               {" "}
-        <div className="w-10 h-10 rounded-md bg-zinc-700 animate-pulse" />     {" "}
+        {" "}
+        <div className="w-10 h-10 rounded-md bg-zinc-700 animate-pulse" />{" "}
       </div>
     );
   }
@@ -81,34 +81,34 @@ const NowPlaying = ({ isCollapsed }) => {
 
   return (
     <div className="mb-4 mx-2 flex items-center justify-center bg-[#2a2a2a] rounded-md p-2">
-           {" "}
+      {" "}
       <img
         src={albumArt}
         alt="Album"
         className={`${isCollapsed ? "w-12 h-12" : "w-10 h-10"} rounded-md`}
         title={song.title || "Not listening"}
       />
-           {" "}
+      {" "}
       {!isCollapsed && (
         <div className="flex-1 max-w-48 p-2">
-                   {" "}
+          {" "}
           <p className="text-[10px] text-zinc-400">
-             {" "}
+            {" "}
             {song.isPlaying
               ? "Now Playing"
               : lastSeenAt
               ? `Last online ${formatTimeAgo(lastSeenAt)}`
               : "Not listening"}
           </p>
-                   {" "}
+          {" "}
           <p className="text-[13px] truncate text-white">
             {song.title || "None"}
           </p>
-                   {" "}
+          {" "}
           <p className="text-[11px] truncate text-zinc-400">
             {song.artist || ""}
           </p>
-                   {" "}
+          {" "}
           {song.songUrl && (
             <a
               href={song.songUrl}
@@ -116,13 +116,13 @@ const NowPlaying = ({ isCollapsed }) => {
               rel="noopener noreferrer"
               className="text-blue-400 hover:underline text-[10px]"
             >
-                            Open on Spotify            {" "}
+               Open on Spotify {" "}
             </a>
           )}
-                 {" "}
+          {" "}
         </div>
       )}
-         {" "}
+      {" "}
     </div>
   );
 };
