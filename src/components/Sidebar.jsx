@@ -10,8 +10,9 @@ import { Link, useLocation } from "react-router-dom";
 import NowPlaying from "./NowPlaying";
 import catimg from "../assets/nyan-cat.gif"
 import TerminalIcon from '@mui/icons-material/Terminal';
-import VinylVisualizer from "./VinylVisualizer";
+
 const Sidebar = ({ toggleTerminal }) => {
+
   const location = useLocation();
   const [portfolioOpen, setPortfolioOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(window.innerWidth < 640);
