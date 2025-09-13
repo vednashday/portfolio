@@ -77,7 +77,7 @@ const NowPlaying = ({ isCollapsed }) => {
     );
   }
 
-  const albumArt = song.albumImageUrl || "/fallback-art.png";
+  const albumArt = song.albumImageUrl;
 
   return (
     <div className="mb-4 mx-2 flex items-center justify-center bg-[#2a2a2a] rounded-md p-2">
