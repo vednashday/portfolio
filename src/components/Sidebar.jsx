@@ -168,7 +168,7 @@ const Sidebar = ({ toggleTerminal }) => {
         </div>
       </div>
 
-      <div className="p-2">
+      <div className={`p-${isCollapsed ? "0" : "2"}`}>
         {song ? (
           <>
             <NowPlaying
@@ -178,7 +178,6 @@ const Sidebar = ({ toggleTerminal }) => {
             />
           </>
         ) : (
-          // Loading Skeleton
           <div className="mb-4 flex justify-center">
             <div className="w-10 h-10 rounded-md bg-zinc-700 animate-pulse" />
           </div>
