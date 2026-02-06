@@ -6,8 +6,30 @@ import MangeImage from '../assets/imgManager.png';
 import BuzzroomImage from '../assets/BuzzRoom.png';
 import TwillerImage from '../assets/twitter.png';
 import PokeLibImage from '../assets/pokelib.png';
+import ContentAIImage from '../assets/contentai.png';
 
 const projects = [
+  {
+  title: "ContentAI – GenAI Social Media Post Generator",
+  description: "A full-stack Generative AI web application that creates copy-paste-ready social media captions from text and images, with strict prompt control to ensure clean, platform-optimized output.",
+  techStack: [
+    "React.js",
+    "Vite",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Firebase Authentication",
+    "Generative AI (LLMs)",
+    "REST APIs",
+    "Vercel",
+    "Render"
+  ],
+  role: "Designed and developed the end-to-end full-stack application. Implemented strict prompt engineering to control AI output, integrated multimodal AI models for image-based caption generation, built secure REST APIs, and deployed the application using Vercel and Render.",
+  challenges: "Enforcing strict AI output constraints to eliminate explanations and formatting noise, handling multimodal prompt engineering for text and image inputs, debugging production deployment issues across frontend and backend, and ensuring secure user-specific data storage and retrieval.",
+  image: ContentAIImage,
+  link: "https://github.com/vednashday/ContentAI",
+  live: "https://content-ai-lemon.vercel.app/"
+},
   {
     title: "PokeLib 3D - Interactive 3D Pokedex",
     description: "A responsive and modern Pokedex web application that allows users to browse a library of Pokemon, view detailed stats, and interact with high-quality 3D models in real-time.",
