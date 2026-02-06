@@ -6,7 +6,7 @@ import MangeImage from '../assets/imgManager.png';
 import BuzzroomImage from '../assets/BuzzRoom.png';
 import TwillerImage from '../assets/twitter.png';
 import PokeLibImage from '../assets/pokelib.png';
-import ContentAIImage from '../assets/contentai.png';
+import ContentAIImage from '../assets/Contentai.png';
 
 const projects = [
   {
